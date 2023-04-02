@@ -1,0 +1,50 @@
+#Request - The customer requests a program that computes a person's income tax.
+
+#Analysis
+    #All taxpayers are charged a flax tax rate of 20%
+    #All taxpayers are allowed a $10,000 standard deduction
+    #For each dependent, a taxpayer is allowed an additional $3,000 deduction
+    #Gross income must be entered to the nearest penny
+    #The income tax is expressed as a decimal number
+
+print(" ... Simple Tax Calculator ...")
+
+print()
+name = input("Hello there! Please enter your name to start your simple tax process! ")
+
+print()
+print("Hello ", name, "! Let us get started with your tax return !", sep = "")
+print()
+
+Gross_income = float(input("Please enter your gross income to the nearest penny. $"))
+print()
+print("Your gross income is $" , '%d' % Gross_income ,sep ="")
+
+flat_tax_rate = .20
+print()
+
+stand_deduct = 10000
+print("Your standard deduction is $", stand_deduct,"!", sep = "")
+
+print()
+dependent = int(input("Please enter the number of dependents you want to include in your tax return. "))
+additional_dependent = dependent * 3000
+
+print()
+print("Wow! You have receive a $", additional_dependent , " deduction in your tax returns!", sep = "")
+print()
+pre_tax = Gross_income * flat_tax_rate
+
+income_tax = Gross_income + pre_tax - additional_dependent - stand_deduct
+
+if income_tax <= 0:
+    income_string = str(income_tax)
+    income_string = income_string.replace('-', '')
+    income_tax = float(income_string)
+    print("You will receive a federal check for $", format(income_tax, '.2f') ,sep = "")
+    print()
+else:
+        print("Your income tax for this year is $", format(income_tax, '.2f') ,sep = "")
+        print()
+
+print("Thank you ", name, ", for using this income tax calculator!", sep = "")
